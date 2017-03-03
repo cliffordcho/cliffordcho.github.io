@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : Embellished
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20140207
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div id="wrapper1">
+	<div id="header-wrapper">
+		<div id="header" class="container">
+			<div id="logo"> <span class="icon icon-cogs"></span>
+				<h1><a href="#">Computer Vision API Guide</a></h1>
+				<span>Written by Clifford Cho</a></span> </div>
+			<div id="menu">
+				<ul>
+					<li><a href="index.html" accesskey="1" title="">Introduction</a></li>
+          <li><a href="analyze.html" accesskey="2" title="">Analyze Image</a></li>
+					<li><a href="url.html" accesskey="3" title="">URL</a></li>
+					<li><a href="response.html" accesskey="4" title="">Response</a></li>
+					<li class="current_page_item"><a href="tag.html" accesskey="5" title="">Tag Images</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="wrapper2">
+		<div id="welcome" class="container">
+			<div class="title">
+				<h2>Tag Image</h2>
+			</div>
+			<p>We went through and rebuilt calling the Analyze Image algorithm using XMLHttpRequest and AJAX. This time, we're going to take what we've learned and apply it to Tag Image. Tag Image analyzes the image the same way as Analyze Image, but returns a list of tags that are relevent to the content of the image. Since the Microsoft documentation doesn't contain a good source code for this, we'll apply it to what we've learned to a POST call for image tags.</p>
+		</div>
+	</div>
+	<div id="wrapper3">
+		<div id="portfolio" class="container">
+			<div class="title">
+				<h2>How to Use Tag Image</h2>
+          <p>To call Tag Image, all you do is change the URL in the POST call. Everything else can be kept the same. While you could access Tags in the prior Analyze Image call in visualFeatures, utilizing just Tag Image will return a response that is strictly for tags only. This can be good if the application you want to create just requires Tags.</p>
+					<iframe width="100%" height="300" src="//jsfiddle.net/66m40mfp/embedded/js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+					<p>Changing the URL will result in just tag results being returned back. We can see that in the image below, showing the tags that the image found. Notice how it's the same tags as the ones in Analyze Image in the visualFeatures object.</p>
+					<span><img src="images/tags.jpg"></span>
+					<p>To access the specific tags, we can call response.tags[0] where the 0 can be any number tag in the object. To access the name, you use ' . ' notation then name; to access confidence, use ' . ' notation then confidence.</p>
+		</div>
+	</div>
+</div>
+<div id="copyright" class="container">
+	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
+</div>
+</body>
+</html>
