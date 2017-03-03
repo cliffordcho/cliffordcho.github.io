@@ -34,9 +34,10 @@ Released   : 20140207
 				<ul>
 					<li><a href="index.html" accesskey="1" title="">Introduction</a></li>
           <li class="current_page_item"><a href="analyze.html" accesskey="2" title="">Analyze Image</a></li>
-					<li><a href="response.html" accesskey="3" title="">Response</a></li>
-					<li><a href="caption.html" accesskey="4" title="">Captions</a></li>
-					<li><a href="implementation.html" accesskey="5" title="">Implementation</a></li>
+					<li><a href="url.html" accesskey="3" title="">URL</a></li>
+					<li><a href="response.html" accesskey="4" title="">Response</a></li>
+					<li><a href="caption.html" accesskey="5" title="">Captions</a></li>
+					<li><a href="implementation.html" accesskey="6" title="">Implementation</a></li>
 				</ul>
 			</div>
 		</div>
@@ -53,11 +54,36 @@ Released   : 20140207
 		<div id="portfolio" class="container">
 			<div class="title">
 				<h2>What is an XMLHttpRequest?</h2>
-          <p>An XMLHttpRequest is a web API that provides an object to transfer data between a client and a server. Contary to its name, XMLHttpRequest can retrieve any type of data and supports other protocols besides HTTP. You can read more about it on their <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">documentation page</a>.In this guide, we’ll be using it to send a POST request to the Computer Vision API utilizing a click function.</p>
+          <p>An XMLHttpRequest is a web API that provides an object to transfer data between a client and a server. Contary to its name, XMLHttpRequest can retrieve any type of data and supports other protocols besides HTTP. You can read more about it on their <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">documentation page</a>. In this guide, we’ll be using it to send a POST request to the Computer Vision API utilizing a click function.</p>
           <p>Let's break it down line by line. First, we need to create an XMLHttpRequest. To do that, call the constructor and set it equal to the variable req.</p>
           <iframe width="100%" height="300" src="//jsfiddle.net/aqvukdtk/embedded/js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-					<p>We'll be sending this req object to the API's server using a POST request. The code below shows the basic outline of our request, and an example of the request we'll be making.</p>
+					<p>We'll be sending this req object to the API's server using a POST request. To do so, we want to req.open. The first parameter will be a string "POST", the second parameter will be the URL we're sending the request to, and the last parameter indicates whether it is an asynchronous call.</p>
 					<iframe width="100%" height="300" src="//jsfiddle.net/ju2a07L2/embedded/js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+					<p>As you can see, the URL is pretty long! That's because we're indicating what type of information we want to access. For the Analyze Image call, we can set the request parameters (found <a href="https://dev.projectoxford.ai/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa">here</a>) by modifying our call. Let's break it down to understand better what's going on:
+					<br>
+					<br>
+					<strong>https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze</strong>
+					<br>
+					<br>This url is the primary URL we will be calling. To modify our paramters, we sent it a query string using '?'. After the '?' we add the request parameter we want included, then an '=', and the sub-parameters within that parameter. For visualFeatures, we want to add all Description, Tags, Categories, Image types, Color, Adult descriptions. Each one is seperated by ',' with no space. Like so:
+					<br>
+					<br>
+					<strong>?visualFeatures=Description,Tags,Categories,Faces,ImageType,Color,Adult</strong>
+					<br>
+					<br>If we want to add other request parameters, include the '&' and the name of the request parameter. Include '=' and the sub-parameter you're requesting.
+					<br>
+					<br>
+					<strong>&details=Celebrities&language=en</strong>
+					<br>
+					<br>There! We've broken down how to request specific information within our POST call. We can remove information that we don't want by simply deling them. When you combine it, it should look like this:
+					<br>
+					<br>
+					<strong>https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description,Tags,Categories,Faces,ImageType,Color,Adult&details=Celebrities&language=en</strong>
+					<br>
+					<p>Finally, we want to create our POST request with some headers. The Computer Vision API asks for a Content-Type header, which the media type of body sent to the API. The Ocp-Apim-Subscription-Key header is your personal subscription key created in the Introduction. This key will let you access the server and utilize the Computer Vision API. To set up the headers, it should look like this:
+					<iframe width="100%" height="300" src="//jsfiddle.net/dudz36su/embedded/js/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+					<p>By calling setRequestHeader, the XMLHttpRequest object will set up the headers in the POST request for you. Content-Type is set to 'application/json' to indicate we are sending a JSON type to the API. In YourKeyHere, put the key given to you. Make sure you keep it safe and hide it from others. Once you're ready, head on over to the next page to discuss how to get image URLs from an HTML file.</p>
+					<div style="padding-top:50px"></div>
+					<p><a href="url.html" class="next-page"><span class="icon icon-arrow-right"></span> Next: Accessing URLs</a></p></div>
         </div>
     	</div>
     </div>
