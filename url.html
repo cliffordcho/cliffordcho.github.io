@@ -47,17 +47,22 @@ Released   : 20140207
 			<div class="title">
 				<h2>URL</h2>
 			</div>
-			<p></p>
+			<p>The Computer Visison API documentation states supported images are either raw image binaries or image URLs. This section will teach you how to pull a URL from an HTML file (input from the user), then pass it as a JSON type to be read by the server. We'll be binding the submit button to a function that will process the request.</p>
 		</div>
 	</div>
 	<div id="wrapper3">
 		<div id="portfolio" class="container">
 			<div class="title">
 				<h2>Accessing a URL</h2>
+        <p>In the Computer Vision API documentation, we know that we want to pass a URL in the body of our POST call. In this section, we're going to design a basic HTML form and button function to accept a URL string from a user to send to the server. This way, we can test if our image is being analyzed. But first, we need to create a new object that will accept the url string:</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/14tk6xt1/embedded/js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        <p>The payload object will represent the body of our POST call. It will contain a string for the URL provided by a user. But for now, set it to null. We can change it later, by calling on the URL submitted by the user in the HTML file. If you check the HTML code, we'll see a basic for outline, where "urlCode" is the URL string given by the user, and "urlSubmit" is the button clicked to submit the string. We can modify it in our JS file by adding a function to the "urlSubmit" button and adding the "urlCode" to the payload.</p>
+        <iframe width="100%" height="300" src="//jsfiddle.net/3t4362fe/embedded/js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        <p>Here, we'll include the full function bindButtons() and connect it to "urlSubmit". We traverse the document using getElementById, and finding the ID we're trying to reference. We do the same for payload too; except for payload, we'll use ' . ' notation to access the URL parameter and set it equal to the string in urlCode. Finally, to send the payload to the server in JSON format, we want to use JSON and "stringify" the object. By calling JSON.stringify(payload), a JSON string will be sent in the POST body and will be read by the server. In the next section, we'll take a look at what the server sends back to us.</p>
 
 
 					<div style="padding-top:50px"></div>
-					<p><a href="caption.html" class="next-page"><span class="icon icon-arrow-right"></span> Next: Captions</a></p></div>
+					<p><a href="response.html" class="next-page"><span class="icon icon-arrow-right"></span> Next: Response</a></p></div>
         </div>
     	</div>
     </div>
